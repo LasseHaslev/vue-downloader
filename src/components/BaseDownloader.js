@@ -16,7 +16,9 @@ export default {
             default() {
                 var self = this;
                 return axios.get( this.url, {
-                    onDownloadProgress: self.onProgress,
+                    onDownloadProgress: function( event ) {
+                        self.onProgress( event.loaded, event.total );
+                    },
                     responseType: 'blob',
                 } );
             }
@@ -28,6 +30,35 @@ export default {
         'download-file': {
             type: Boolean,
             default: true,
+        },
+
+        'on-progress': {
+            type: Function,
+            default( loaded, total ) {
+                this.loaded = loaded;
+                this.total = total;
+                this.percentage = this.loaded / this.total;
+
+                this.$emit( 'progress', {
+                    loaded: this.loaded,
+                    total: this.total,
+                    percentage: this.percentage,
+                } );
+            },
+        },
+        'on-complete': {
+            type: Function,
+            default( loaded, total ) {
+                this.loaded = loaded;
+                this.total = total;
+                this.percentage = this.loaded / this.total;
+
+                this.$emit( 'progress', {
+                    loaded: this.loaded,
+                    total: this.total,
+                    percentage: this.percentage,
+                } );
+            },
         }
     },
 
@@ -63,17 +94,6 @@ export default {
     },
 
     methods: {
-        onProgress( progressEvent ) {
-            this.loaded = progressEvent.loaded;
-            this.total = progressEvent.total;
-            this.percentage = this.loaded / this.total;
-
-            this.$emit( 'progress', {
-                loaded: this.loaded,
-                total: this.total,
-                percentage: this.percentage,
-            } );
-        },
         formatBytes(bytes,decimals) {
             if(bytes == 0) return '0 Byte';
             var k = 1000; // or 1024 for binary
