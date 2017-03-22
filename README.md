@@ -1,9 +1,7 @@
-# @lassehaslev/vue-image-picker
-
-> Image picker using [ @lassehaslev/vue-item-picker ](https://github.com/LasseHaslev/vue-item-picker) and [Bulma](http://bulma.io/) styling.
+# @lassehaslev/vue-downloader
 
 ## Installation
-Run ```npm install @lassehaslev/vue-image-picker --save``` in your project folder
+Run ```npm install @lassehaslev/vue-downloader --save``` in your project folder
 
 ## Usage
 This package uses [vue-resource](https://github.com/vuejs/vue-resource), so just make sure you include it.
@@ -15,18 +13,18 @@ import Vue from 'vue';
 import VueResource from 'vue-resource';
 Vue.use( VueResource );
 
-import ImagePicker from '@lassehaslev/vue-image-picker';
-Vue.use( 'image-picker', ImagePicker );
+import ImagePicker from '@lassehaslev/vue-downloader';
+Vue.use( 'downloader', ImagePicker );
 ```
 
 #### Html
 ```html
-<image-picker url="https://jsonplaceholder.typicode.com/photos?limit=10"
+<downloader url="https://jsonplaceholder.typicode.com/photos?limit=10"
 :items-adaptor="imagesAdaptor"
 :item-adaptor="imageAdaptor"
 :selected="selectedImage"
 @confirm="selectImage"
-ref="imagePicker"></image-picker>
+ref="imagePicker"></downloader>
 ```
 
 
