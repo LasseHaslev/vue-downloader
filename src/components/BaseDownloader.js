@@ -23,6 +23,10 @@ export default {
         },
         'auto-download': {
             type: Boolean,
+            default: false,
+        },
+        'download-file': {
+            type: Boolean,
             default: true,
         }
     },
@@ -33,10 +37,6 @@ export default {
             loaded: 0,
             total: 0,
         }
-    },
-
-    mounted() {
-        window.setTimeout( this.download, 1000 );
     },
 
     computed: {
@@ -51,6 +51,12 @@ export default {
 
         percentageString: function() {
             return this.percentage * 100 + '%'   
+        }
+    },
+
+    mounted() {
+        if (this.autoDownload) {
+            this.download();
         }
     },
 
@@ -82,7 +88,7 @@ export default {
                     filename: self.name,
                 };
                 self.$emit( 'completed', response );
-                if (self.autoDownload) {
+                if (self.downloadFile) {
                     downloadjs( response.file.data, response.filename );
                 }
             } ).catch( function(error) {

@@ -15,11 +15,18 @@ export default {
             </section>
             <section class="hero is-light">
                 <div class="hero-body">
-                    <downloader url="http://localhost:1337/download" name="my-cat.jpg"></downloader>
+                    <downloader url="http://localhost:1337/download" name="my-cat.jpg" ref="downloader"></downloader>
+                    <div class="button is-primary" @click="download">Start download</div>
                 </div>
             </section>
         </div>
     `,
+
+    methods: {
+        download() {
+            console.log( this.$refs.downloader.download() );
+        }
+    },
 
     components: {
         Downloader,
