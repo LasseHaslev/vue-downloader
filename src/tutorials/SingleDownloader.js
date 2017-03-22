@@ -1,4 +1,4 @@
-import Downloader from '../index';
+import { DownloaderItem } from '../index';
 export default {
     template: `
         <div>
@@ -17,7 +17,7 @@ export default {
                             <div class="button is-primary is-fullwidth" @click="download">Start download</div>
                         </div>
                         <div class="column">
-                            <downloader url="http://localhost:1337/download" name="my-cat.jpg" ref="downloader"></downloader>
+                            <downloader-item url="http://localhost:1337/download" name="my-cat.jpg" ref="downloader"></downloader-item>
                         </div>
                     </div>
                     </div>
@@ -33,6 +33,6 @@ export default {
     },
 
     components: {
-        Downloader,
+        DownloaderItem,
     }
 }
