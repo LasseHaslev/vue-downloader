@@ -42,11 +42,13 @@ export default {
     computed: {
         loadedString: function() {
 
+
             if ( ! this.total ) {
                 return 'Waiting...';
             }
+            var completed = this.loaded == this.total ? ' (completed)' : '';
 
-            return this.formatBytes( this.loaded, 1 ) +  ' of ' + this.formatBytes( this.total, 1 );
+            return this.formatBytes( this.loaded, 1 ) +  ' of ' + this.formatBytes( this.total, 1 ) + completed;
         },
 
         percentageString: function() {
@@ -81,6 +83,7 @@ export default {
             return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
         },
         download() {
+            this.loaded = this.percentage = 0;
             var self = this;
             this.downloadFunction().then( function( item ) {
                 var response = {

@@ -5,18 +5,22 @@ export default {
             <section class="section">
                 <div class="container">
                     <h3 class="title is-2">
-                        Image picker
+                        Single downloader
                     </h3>
-                    <h4 class="subtitle is-4">Single Downloader</h4>
-        <br>
-
-
                 </div>
             </section>
             <section class="hero is-light">
                 <div class="hero-body">
-                    <downloader url="http://localhost:1337/download" name="my-cat.jpg" ref="downloader"></downloader>
-                    <div class="button is-primary" @click="download">Start download</div>
+                    <div class="container">
+                    <div class="columns">
+                        <div class="column is-4-tablet is-2-desktop">
+                            <div class="button is-primary is-fullwidth" @click="download">Start download</div>
+                        </div>
+                        <div class="column">
+                            <downloader url="http://localhost:1337/download" name="my-cat.jpg" ref="downloader"></downloader>
+                        </div>
+                    </div>
+                    </div>
                 </div>
             </section>
         </div>
