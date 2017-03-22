@@ -16,6 +16,8 @@ app.use(function(req, res, next) {
   next();
 });
 
+// Static files
+app.use('/files', express.static('files'))
 // routes will go here
 app.get( '/download', function(req, res, next) {
 

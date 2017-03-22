@@ -13,7 +13,7 @@ export default {
                 <div class="hero-body">
                     <div class="container">
                         <div class="button is-primary is-fullwidth" @click="download">Start download</div>
-                        <downloader url="http://localhost:1337/download" name="my-cat.jpg" ref="downloader"></downloader>
+                        <downloader :items="images" ref="downloader"></downloader>
                         <pre>{{ images }}</pre>
                     </div>
                 </div>
@@ -27,22 +27,22 @@ export default {
                 {
                     name: 'valley-sky-99551.jpeg',
                     filename: 'valley-sky-99551.jpeg',
-                    url: 'https://static.pexels.com/photos/99551/hot-air-balloon-valley-sky-99551.jpeg',
+                    url: 'http://localhost:1337/files/image.jpg',
                 },
                 {
                     name: 'pexels-photo-298872.jpeg',
                     filename: 'pexels-photo-298872.jpeg',
-                    url: 'https://static.pexels.com/photos/298872/pexels-photo-298872.jpeg',
+                    url: 'http://localhost:1337/files/image-1.jpg',
                 },
                 {
                     name: 'pexels-photo-23978.jpg',
                     filename: 'pexels-photo-23978.jpg',
-                    url: 'https://static.pexels.com/photos/23978/pexels-photo-23978.jpg',
+                    url: 'http://localhost:1337/files/image-2.jpg',
                 },
                 {
                     name: 'pexels-photo-198395.jpeg',
                     filename: 'pexels-photo-198395.jpeg',
-                    url: 'https://static.pexels.com/photos/198395/pexels-photo-198395.jpeg',
+                    url: 'http://localhost:1337/files/image-3.jpg',
                 },
             ],
         };
@@ -50,7 +50,8 @@ export default {
 
     methods: {
         download() {
-            console.log( this.$refs.downloader.download() );
+            // console.log( this.$refs.downloader );
+            this.$refs.downloader.download();
         }
     },
 

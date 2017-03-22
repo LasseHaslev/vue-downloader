@@ -54,9 +54,9 @@ export default {
                     file: item,
                     filename: self.name,
                 };
-                self.$emit( 'completed', response );
+                self.$emit( 'downloaded', response );
                 if (self.downloadFile) {
-                    console.log(item);
+                    // console.log(item);
                     downloadjs( response.file.data, response.filename );
                 }
             },
