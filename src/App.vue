@@ -10,8 +10,9 @@
             </div>
         </section>
 
-        <multiple-downloader></multiple-downloader>
         <single-downloader></single-downloader>
+        <multiple-downloader></multiple-downloader>
+        <selectable-multiple-downloader></selectable-multiple-downloader>
 
         <div class="hero is-primary">
             <div class="hero-body">
@@ -25,6 +26,7 @@
 <script>
 import SingleDownloader from './tutorials/SingleDownloader';
 import MultipleDownloader from './tutorials/MultipleDownloader';
+import SelectableMultipleDownloader from './tutorials/SelectableMultipleDownloader';
 export default {
     name: 'app',
     data () {
@@ -34,6 +36,7 @@ export default {
     components: {
         SingleDownloader,
         MultipleDownloader,
+        SelectableMultipleDownloader,
     }
 }
 </script>
