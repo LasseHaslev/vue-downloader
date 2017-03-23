@@ -4,27 +4,53 @@
 Run ```npm install @lassehaslev/vue-downloader --save``` in your project folder
 
 ## Usage
-This package uses [vue-resource](https://github.com/vuejs/vue-resource), so just make sure you include it.
+
 #### Javscript
 ```js
 // Import vue
 import Vue from 'vue';
-// Make sure you add vue Resource
-import VueResource from 'vue-resource';
-Vue.use( VueResource );
 
-import ImagePicker from '@lassehaslev/vue-downloader';
-Vue.use( 'downloader', ImagePicker );
+import Downloader from '@lassehaslev/vue-downloader';
+Vue.use( 'downloader', Downloader );
 ```
 
 #### Html
 ```html
-<downloader url="https://jsonplaceholder.typicode.com/photos?limit=10"
-:items-adaptor="imagesAdaptor"
-:item-adaptor="imageAdaptor"
-:selected="selectedImage"
-@confirm="selectImage"
-ref="imagePicker"></downloader>
+<!-- single downloader -->
+<downloader
+    url="http://localhost:1337/download" 
+    name="my-cat.jpg"
+    ref="downloader"></downloader>
+<button @click.prevent="$refs.downloader.download();"></button>
+
+<!-- Multiple downloader -->
+<downloader
+    :multiple="true"
+    name="Beautiful pictures"
+    :items="[
+        {
+            name: 'valley-sky-99551.jpeg',
+            filename: 'valley-sky-99551.jpeg',
+            url: 'http://localhost:1337/files/image.jpg',
+        },
+        {
+            name: 'pexels-photo-298872.jpeg',
+            filename: 'pexels-photo-298872.jpeg',
+            url: 'http://localhost:1337/files/image-1.jpg',
+        },
+        {
+            name: 'pexels-photo-23978.jpg',
+            filename: 'pexels-photo-23978.jpg',
+            url: 'http://localhost:1337/files/image-2.jpg',
+        },
+        {
+            name: 'pexels-photo-198395.jpeg',
+            filename: 'pexels-photo-198395.jpeg',
+            url: 'http://localhost:1337/files/image-3.jpg',
+        },
+    ]"
+    ref="multiDownload"></downloader>
+<button @click.prevent="$refs.multiDownload.download();"></button>
 ```
 
 
