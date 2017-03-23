@@ -21,7 +21,7 @@ export default {
                                 <td>{{ item.name }}</td>
                             </tr>
                         </table>
-                        <downloader :multiple="true" name="Beautiful pictures" :items="downloadableFiles" ref="downloader"></downloader>
+                        <downloader :multiple="true" name="Selected images" :items="downloadableFiles" ref="downloader"></downloader>
                         <div class="button is-primary is-fullwidth" @click="download">Start download</div>
                     </div>
                 </div>
