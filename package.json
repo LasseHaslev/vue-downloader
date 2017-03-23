@@ -1,7 +1,7 @@
 {
   "name": "@lassehaslev/vue-downloader",
   "description": "Download elements with vuejs",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Lasse S. Haslev <lasse@haslev.no>",
   "repository": {
     "type": "git",
