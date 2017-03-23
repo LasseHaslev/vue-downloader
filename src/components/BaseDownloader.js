@@ -1,3 +1,5 @@
+import downloadjs from 'downloadjs';
+import jszip from 'jszip';
 import ItemProps from './mixins/ItemProps';
 import DownloaderItem from './DownloaderItem';
 
@@ -6,6 +8,14 @@ export default {
     mixins: [ ItemProps ],
 
     props: {
+        url: {
+            type: String,
+            default: null,
+        },
+        name: {
+            type: String,
+            default: 'download',
+        },
         items: {
             type: Array,
             default() {
@@ -24,13 +34,21 @@ export default {
             downloading: 0,
             downloaded: 0,
             isDownloading: false,
+
+            zip: null,
         };
     },
 
     methods: {
         download() {
             this.downloading = this.downloaded = 0;
+
+            // Prepare zip file
+            this.zip = jszip();
+
             var length = Math.min( this.num, this.$refs.downloader.length );
+
+
             // console.log(length);
             // Loop through all files
             for (var i = 0, len = length; i < len; i++) {
@@ -54,15 +72,21 @@ export default {
             }
             this.downloaded++;
 
-            // console.log([this.downloaded, this.items.length]);
+            // Add file to zip
+            this.zip.file( item.filename, item.file.data );
 
             if (this.downloaded == this.items.length) {
+                console.log('done');
                 this.wrapUp();
             }
         },
 
         wrapUp() {
-            console.log('All done!');
+            var self = this;
+            this.zip.generateAsync({type:"blob"})
+                .then(function (blob) {
+                    downloadjs( blob, self.name + '.zip' )
+                });
         }
     },
 

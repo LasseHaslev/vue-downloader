@@ -12,6 +12,7 @@ export default {
                 :name="item.name"
                 :filename="item.name"
                 :ref="'downloader'"
+                :download-file="false"
                 @downloaded="onDownloaded"
             ></downloader-item>
         </div>

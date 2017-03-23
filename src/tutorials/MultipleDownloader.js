@@ -13,7 +13,7 @@ export default {
                 <div class="hero-body">
                     <div class="container">
                         <div class="button is-primary is-fullwidth" @click="download">Start download</div>
-                        <downloader :items="images" ref="downloader"></downloader>
+                        <downloader name="Beautiful pictures" :items="images" ref="downloader"></downloader>
                         <pre>{{ images }}</pre>
                     </div>
                 </div>
