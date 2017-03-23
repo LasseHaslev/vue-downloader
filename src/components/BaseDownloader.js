@@ -18,6 +18,10 @@ export default {
             type: String,
             default: 'download',
         },
+        multiple: {
+            type: Boolean,
+            default: false,
+        },
         items: {
             type: Array,
             default() {
@@ -29,6 +33,12 @@ export default {
             type: Number,
             default: 1,
         },
+    },
+
+    mounted() {
+        if (!this.multiple && this.autoDownload) {
+            this.download();
+        }
     },
 
     data() {
@@ -43,6 +53,16 @@ export default {
 
     methods: {
         download() {
+            if (this.multiple) {
+                this.downloadMultiple();
+            }
+            else {
+
+                this.$refs.modal.open();
+                this.$refs.downloader.download();
+            }
+        },
+        downloadMultiple() {
             this.$refs.modal.open();
             this.downloading = this.downloaded = 0;
 
@@ -79,7 +99,6 @@ export default {
             this.zip.file( item.filename, item.file.data );
 
             if (this.downloaded == this.items.length) {
-                console.log('done');
                 this.wrapUp();
             }
         },
