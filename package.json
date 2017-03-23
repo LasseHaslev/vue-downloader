@@ -1,6 +1,6 @@
 {
   "name": "@lassehaslev/vue-downloader",
-  "description": "Image picker using @lassehaslev/vue-item-picker",
+  "description": "Download elements with vuejs",
   "version": "0.0.1",
   "author": "Lasse S. Haslev <lasse@haslev.no>",
   "repository": {
