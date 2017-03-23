@@ -58,6 +58,9 @@ Vue.use( 'downloader', Downloader );
 ## Development
 
 ``` bash
+# install image dependencies
+sh init.sh
+
 # install dependencies
 npm install
 

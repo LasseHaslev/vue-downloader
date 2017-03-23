@@ -1,4 +1,3 @@
-yarn
 mkdir files
 wget https://static.pexels.com/photos/99551/hot-air-balloon-valley-sky-99551.jpeg -O files/image.jpg
 wget https://static.pexels.com/photos/298872/pexels-photo-298872.jpeg -O files/image-1.jpg
