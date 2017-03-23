@@ -11,9 +11,10 @@ export default {
                     <div v-if="multiple">
 
                         <h1 class="title">{{ name }} {{ items.length == downloaded ? '(Downloaded)' : ''}}</h1>
+                        <h4 class="subtitle">{{ downloaded }} of {{ items.length }} downloaded.</h4>
                         <progress class="progress is-primary" :class="{ 'is-success': items.length == downloaded }" :value="downloaded" :max="items.length"></progress>
 
-                        <div v-for="( item, index ) in items">
+                        <div v-for="( item, index ) in items" v-show="shouldHide( index )">
                             <hr>
                             
                             <downloader-item

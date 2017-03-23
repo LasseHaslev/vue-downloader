@@ -10,6 +10,10 @@ export default {
     mixins: [ ItemProps ],
 
     props: {
+        'hide-downloaded': {
+            type: Boolean,
+            default: true,
+        },
         url: {
             type: String,
             default: null,
@@ -109,7 +113,14 @@ export default {
                 .then(function (blob) {
                     downloadjs( blob, self.name + '.zip' )
                 });
-        }
+        },
+
+        shouldHide( index ) {
+            if (!this.hideDownloaded) {
+                return true;
+            }
+            return this.downloaded < index;
+        },
     },
 
     components: {
