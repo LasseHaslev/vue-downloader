@@ -5,7 +5,8 @@ export default {
 
     template: `
         <div>
-            <label for="">{{ loadedString }}</label>
+            <p><strong>{{ name }}</strong></p>
+            <p><small>{{ loadedString }}</small></p>
             <progress :value="percentage" max="1" class="progress is-primary">{{ percentageString }}</progress>
         </div>
     `,

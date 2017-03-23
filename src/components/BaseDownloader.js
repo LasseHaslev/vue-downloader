@@ -3,6 +3,8 @@ import jszip from 'jszip';
 import ItemProps from './mixins/ItemProps';
 import DownloaderItem from './DownloaderItem';
 
+import { Modal } from '@lassehaslev/vue-modal';
+
 export default {
 
     mixins: [ ItemProps ],
@@ -41,6 +43,7 @@ export default {
 
     methods: {
         download() {
+            this.$refs.modal.open();
             this.downloading = this.downloaded = 0;
 
             // Prepare zip file
@@ -92,6 +95,7 @@ export default {
 
     components: {
         DownloaderItem,
+        Modal,
     }
 
 }
